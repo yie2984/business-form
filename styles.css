@@ -7,38 +7,39 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: #f5f0e8;
+    background: #fdf5f0;
     min-height: 100vh;
     padding: 20px;
 }
 
 /* 頂部橫幅 */
 .header-banner {
-    background: linear-gradient(135deg, #8D6E63 0%, #6D4C41 100%);
-    padding: 40px 20px;
+    background: linear-gradient(135deg, #a1887f 0%, #8d6e63 100%);
+    padding: 50px 20px;
     text-align: center;
     color: white;
 }
 
 .header-banner .logo {
-    max-width: 180px;
+    max-width: 280px;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     background: rgba(255,255,255,0.95);
-    padding: 15px;
-    border-radius: 12px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .header-banner h1 {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 600;
     margin-bottom: 8px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .header-banner .subtitle {
-    font-size: 14px;
-    opacity: 0.9;
+    font-size: 16px;
+    opacity: 0.95;
 }
 
 /* 主容器 */
@@ -62,10 +63,10 @@ body {
 }
 
 .form-section h2 {
-    color: #444;
-    font-size: 15px;
+    color: #5d4037;
+    font-size: 16px;
     margin-bottom: 18px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* 表單群組 */
@@ -82,7 +83,7 @@ body {
 }
 
 .form-group label .required {
-    color: #d93025;
+    color: #c62828;
     margin-left: 2px;
 }
 
@@ -92,26 +93,26 @@ body {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 12px 14px;
+    border: 1px solid #d7ccc8;
+    border-radius: 6px;
     font-size: 14px;
     transition: all 0.2s;
-    background: #fff;
+    background: #fffaf5;
 }
 
 .form-group input:hover,
 .form-group select:hover,
 .form-group textarea:hover {
-    border-color: #bbb;
+    border-color: #a1887f;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #8D6E63;
-    box-shadow: 0 0 0 2px rgba(141, 110, 99, 0.2);
+    border-color: #a1887f;
+    box-shadow: 0 0 0 3px rgba(161, 136, 127, 0.25);
 }
 
 /* 選擇框群組 */
@@ -125,26 +126,26 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: 8px 16px;
-    background: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 20px;
+    padding: 10px 18px;
+    background: #f5f0eb;
+    border: 1px solid #d7ccc8;
+    border-radius: 24px;
     transition: all 0.2s;
     font-size: 14px;
     font-weight: normal;
 }
 
 .checkbox-group label:hover {
-    background: #e9ecef;
-    border-color: #bbb;
+    background: #efebe9;
+    border-color: #a1887f;
 }
 
 .checkbox-group input[type="checkbox"] {
     margin-right: 6px;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     cursor: pointer;
-    accent-color: #8D6E63;
+    accent-color: #8d6e63;
 }
 
 .checkbox-group input[type="checkbox"]:checked + span {
@@ -154,7 +155,7 @@ body {
 /* 表單操作區 */
 .form-actions {
     padding: 20px 30px;
-    background: #f8f9fa;
+    background: #f5f0eb;
     display: flex;
     justify-content: flex-end;
     gap: 15px;
@@ -162,9 +163,9 @@ body {
 
 /* 按鈕樣式 */
 .btn {
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 15px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
@@ -172,30 +173,30 @@ body {
 }
 
 .btn-primary {
-    background: #8D6E63;
+    background: #8d6e63;
     color: white;
 }
 
 .btn-primary:hover {
-    background: #6D4C41;
-    box-shadow: 0 2px 8px rgba(141, 110, 99, 0.4);
+    background: #6d4c41;
+    box-shadow: 0 4px 12px rgba(141, 110, 99, 0.4);
 }
 
 .btn-secondary {
-    background: #f5f5f5;
-    color: #666;
-    border: 1px solid #ddd;
+    background: #efebe9;
+    color: #5d4037;
+    border: 1px solid #d7ccc8;
 }
 
 .btn-secondary:hover {
-    background: #eee;
+    background: #d7ccc8;
 }
 
-/* 結果訊息 */
-.result {
-    padding: 15px 20px;
+/* 結果 {
+    padding:訊息 */
+.result 15px 20px;
     margin: 0 30px 20px;
-    border-radius: 4px;
+    border-radius: 6px;
     text-align: center;
     font-size: 14px;
 }
@@ -219,43 +220,43 @@ body {
 /* Footer */
 footer {
     text-align: center;
-    padding: 15px;
-    color: #888;
-    font-size: 12px;
+    padding: 20px;
+    color: #8d6e63;
+    font-size: 13px;
 }
 
 /* 首頁樣式 */
 .home-container {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
 }
 
 .home-container h1 {
-    color: #6D4C41;
-    font-size: 32px;
-    margin-bottom: 20px;
+    color: #6d4c41;
+    font-size: 36px;
+    margin-bottom: 25px;
 }
 
 .home-container p {
-    color: #666;
-    font-size: 16px;
-    margin-bottom: 30px;
+    color: #8d6e63;
+    font-size: 18px;
+    margin-bottom: 40px;
 }
 
 .home-container a {
     display: inline-block;
-    padding: 15px 40px;
-    background: #8D6E63;
+    padding: 18px 50px;
+    background: #8d6e63;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
-    font-size: 18px;
+    border-radius: 10px;
+    font-size: 20px;
     transition: all 0.2s;
 }
 
 .home-container a:hover {
-    background: #6D4C41;
-    box-shadow: 0 4px 12px rgba(141, 110, 99, 0.4);
+    background: #6d4c41;
+    box-shadow: 0 6px 20px rgba(141, 110, 99, 0.5);
 }
 
 /* 響應式設計 */
@@ -265,11 +266,16 @@ footer {
     }
     
     .header-banner {
-        padding: 30px 20px;
+        padding: 40px 20px;
+    }
+    
+    .header-banner .logo {
+        max-width: 200px;
+        padding: 12px;
     }
     
     .header-banner h1 {
-        font-size: 22px;
+        font-size: 24px;
     }
     
     .container {
