@@ -148,7 +148,7 @@
         }
 
         // 提交表單
-        document.getElementById('businessForm').addEventListener('submit', async function(e) {
+        document.getElementById('businessForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const resultDiv = document.getElementById('result');
@@ -157,52 +157,55 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '提交中...';
             
-            // 收集表單資料
-            const formData = {
-                loginDate: document.getElementById('loginDate').value,
-                contactPerson: Array.from(document.querySelectorAll('input[name="contactPerson"]:checked')).map(cb => cb.value).join(', '),
-                workType: document.getElementById('workType').value,
-                builder: document.getElementById('builder').value,
-                firePermit: document.getElementById('firePermit').value,
-                address: document.getElementById('address').value,
-                client: document.getElementById('client').value,
-                buildingType: document.getElementById('buildingType').value,
-                floors: document.getElementById('floors').value,
-                totalArea: document.getElementById('totalArea').value,
-                certifications: Array.from(document.querySelectorAll('input[name="certifications"]:checked')).map(cb => cb.value).join(', '),
-                notes: document.getElementById('notes').value
-            };
+            // 使用 URLSearchParams
+            const formData = new URLSearchParams();
+            formData.append('loginDate', document.getElementById('loginDate').value);
+            formData.append('contactPerson', Array.from(document.querySelectorAll('input[name="contactPerson"]:checked')).map(cb => cb.value).join(', '));
+            formData.append('workType', document.getElementById('workType').value);
+            formData.append('builder', document.getElementById('builder').value);
+            formData.append('firePermit', document.getElementById('firePermit').value);
+            formData.append('address', document.getElementById('address').value);
+            formData.append('client', document.getElementById('client').value);
+            formData.append('buildingType', document.getElementById('buildingType').value);
+            formData.append('floors', document.getElementById('floors').value);
+            formData.append('totalArea', document.getElementById('totalArea').value);
+            formData.append('certifications', Array.from(document.querySelectorAll('input[name="certifications"]:checked')).map(cb => cb.value).join(', '));
+            formData.append('notes', document.getElementById('notes').value);
 
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                const data = await response.json();
-                
-                if (data.status === 'success') {
-                    resultDiv.className = 'result success';
-                    resultDiv.textContent = '✅ 資料已成功提交！感謝您的填寫。';
-                    resultDiv.classList.remove('hidden');
-                    setTimeout(() => {
-                        clearForm();
-                    }, 2000);
-                } else {
-                    throw new Error(data.message || '提交失敗');
+            fetch(API_URL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(text => {
+                try {
+                    const data = JSON.parse(text);
+                    if (data.status === 'success') {
+                        resultDiv.className = 'result success';
+                        resultDiv.textContent = '✅ 資料已成功提交！感謝您的填寫。';
+                        resultDiv.classList.remove('hidden');
+                        setTimeout(() => { clearForm(); }, 2000);
+                    } else {
+                        throw new Error(data.message);
+                    }
+                } catch (err) {
+                    if (text.includes('success') || text.includes('已儲存')) {
+                        resultDiv.className = 'result success';
+                        resultDiv.textContent = '✅ 資料已成功提交！感謝您的填寫。';
+                        resultDiv.classList.remove('hidden');
+                        setTimeout(() => { clearForm(); }, 2000);
+                    } else {
+                        throw new Error(err.message);
+                    }
                 }
-            } catch (error) {
+            })
+            .catch(error => {
                 resultDiv.className = 'result error';
                 resultDiv.textContent = '❌ 提交失敗：' + error.message;
                 resultDiv.classList.remove('hidden');
-            } finally {
+            })
+            .finally(() => {
                 submitBtn.disabled = false;
                 submitBtn.textContent = '提交';
-            }
+            });
         });
-    </script>
-</body>
-</html>
