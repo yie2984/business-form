@@ -89,8 +89,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="totalArea">總樓地板面積 <span class="required">*</span></label>
-                    <input type="text" id="totalArea" name="totalArea" placeholder="例如：500坪" required>
+                    <label for="totalArea">總樓地板面積 (平方公尺) <span class="required">*</span></label>
+                    <input type="text" id="totalArea" name="totalArea" placeholder="例如：500" required>
                 </div>
             </section>
 
@@ -131,13 +131,31 @@
         // Web App URL - Google Apps Script
         const API_URL = "https://script.google.com/macros/s/AKfycbzPoReHdl9AKR8pITlNkd7nizCywpOwbFNF6K-1LlqZbz9TEqCWVy_1ddbAivbn4FiC/exec";
 
+        // 取得台灣時區的現在時間
+        function getTaiwanNow() {
+            // 台灣時區 UTC+8
+            const now = new Date();
+            const taiwanOffset = 8 * 60; // UTC+8
+            const localOffset = now.getTimezoneOffset();
+            const diff = (localOffset + taiwanOffset) * 60 * 1000;
+            return new Date(now.getTime() + diff);
+        }
+
         // 初始化標題和日期
         function initForm() {
-            const now = new Date();
+            const now = getTaiwanNow();
             const year = now.getFullYear();
             const month = now.getMonth() + 1;
             document.getElementById("formTitle").textContent = year + "年" + month + "月 業務統計表";
-            document.getElementById('loginDate').value = now.toISOString().slice(0, 16);
+            
+            // 格式化為 YYYY-MM-DDTHH:mm
+            const pad = (n) => n.toString().padStart(2, '0');
+            const formatted = now.getFullYear() + '-' + 
+                            pad(now.getMonth() + 1) + '-' + 
+                            pad(now.getDate()) + 'T' + 
+                            pad(now.getHours()) + ':' + 
+                            pad(now.getMinutes());
+            document.getElementById('loginDate').value = formatted;
         }
 
         // 頁面載入後初始化
@@ -146,7 +164,14 @@
         // 清除表單
         function clearForm() {
             document.getElementById('businessForm').reset();
-            document.getElementById('loginDate').value = new Date().toISOString().slice(0, 16);
+            const now = getTaiwanNow();
+            const pad = (n) => n.toString().padStart(2, '0');
+            const formatted = now.getFullYear() + '-' + 
+                            pad(now.getMonth() + 1) + '-' + 
+                            pad(now.getDate()) + 'T' + 
+                            pad(now.getHours()) + ':' + 
+                            pad(now.getMinutes());
+            document.getElementById('loginDate').value = formatted;
             document.getElementById('result').classList.add('hidden');
         }
 
