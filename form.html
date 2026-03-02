@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年3月 業務統計表</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.jpg" alt="尚鋐消防" class="logo">
+            <h1>📋 業務工作表</h1>
+            <p class="subtitle">請於案件結案後登錄</p>
+        </header>
+
+        <form id="businessForm">
+            <section class="form-section">
+                <h2>📋 基本資訊</h2>
+                
+                <div class="form-group">
+                    <label for="loginDate">📅 登入日期 *</label>
+                    <input type="datetime-local" id="loginDate" name="loginDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactPerson">👤 承辦人 (可複選) *</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="contactPerson" value="阿德"> 阿德</label>
+                        <label><input type="checkbox" name="contactPerson" value="阿真"> 阿真</label>
+                        <label><input type="checkbox" name="contactPerson" value="秋伶"> 秋伶</label>
+                        <label><input type="checkbox" name="contactPerson" value="宇哲"> 宇哲</label>
+                        <label><input type="checkbox" name="contactPerson" value="暉恩"> 暉恩</label>
+                        <label><input type="checkbox" name="contactPerson" value="其他"> 其他</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="workType">🛠️ 工作分類 *</label>
+                    <select id="workType" name="workType" required>
+                        <option value="">請選擇</option>
+                        <option value="會審">會審</option>
+                        <option value="會勘">會勘</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>🏢 建築物資訊</h2>
+                
+                <div class="form-group">
+                    <label for="builder">🏗️ 起造人 (建築物名稱) *</label>
+                    <input type="text" id="builder" name="builder" placeholder="請輸入建築物名稱" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firePermit">📜 消防核准文號</label>
+                    <input type="text" id="firePermit" name="firePermit" placeholder="請輸入消防核准文號">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">📍 地址(地號) *</label>
+                    <input type="text" id="address" name="address" placeholder="請輸入地址" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="client">🤝 委託人 *</label>
+                    <input type="text" id="client" name="client" placeholder="請輸入委託人" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="buildingType">🏢 建築物用途分類 *</label>
+                    <select id="buildingType" name="buildingType" required>
+                        <option value="">請選擇</option>
+                        <option value="甲類">甲類</option>
+                        <option value="乙類">乙類</option>
+                        <option value="丙類">丙類</option>
+                        <option value="丁類">丁類</option>
+                        <option value="複合用途">複合用途</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="floors">🏢 樓層概要 (地上x層地下x層) *</label>
+                    <input type="text" id="floors" name="floors" placeholder="例如：地上10層地下2層" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="totalArea">📏 總樓地板面積 *</label>
+                    <input type="number" id="totalArea" name="totalArea" placeholder="請輸入平方公尺" step="0.01" min="0" required>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>📝 附加簽證 (可複選)</h2>
+                
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="certifications" value="設備師(李茂鑫)"> 🛠️ 設備師(李茂鑫)</label>
+                    <label><input type="checkbox" name="certifications" value="設備士(翁國珍)"> 🔧 設備士(翁國珍)</label>
+                    <label><input type="checkbox" name="certifications" value="發電機"> ⚡ 發電機</label>
+                    <label><input type="checkbox" name="certifications" value="緩降機"> 🪂 緩降機</label>
+                    <label><input type="checkbox" name="certifications" value="其他"> 📌 其他</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">💬 備註</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="請輸入其他備註事項"></textarea>
+                </div>
+            </section>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">✅ 提交</button>
+                <button type="reset" class="btn-secondary">🔄 清除表單</button>
+            </div>
+        </form>
+
+        <div id="result" class="result hidden"></div>
+    </div>
+
+    <footer>
+        <p>本表單由尚鋐消防有限公司建立</p>
+    </footer>
+
+    <script>
+        // Web App URL - Google Apps Script
+        const API_URL = "https://script.google.com/macros/s/AKfycbxTiG2QpsKPmgq9YKrCmfpeFURBJeaZERFB_0q_DfpffttmySoMxXZU5jbOxnbw7ioO/exec";
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
