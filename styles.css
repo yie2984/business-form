@@ -21,7 +21,7 @@ body {
 }
 
 .header-banner .logo {
-    max-width: 280px;
+    max-width: 350px;
     height: auto;
     margin-bottom: 15px;
     background: rgba(255,255,255,0.95);
@@ -270,7 +270,7 @@ footer {
     }
     
     .header-banner .logo {
-        max-width: 200px;
+        max-width: 250px;
         padding: 12px;
     }
     
