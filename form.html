@@ -3,40 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026年3月 業務統計表</title>
+    <title>尚鋐消防 - 業務統計表</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="logo.jpg" alt="尚鋐消防" class="logo">
-            <h1>📋 業務工作表</h1>
-            <p class="subtitle">請於案件結案後登錄</p>
-        </header>
+    <!-- 頂部橫幅 -->
+    <header class="header-banner">
+        <img src="logo.jpg" alt="尚鋐消防" class="logo">
+        <h1>2026年 業務統計表</h1>
+        <p class="subtitle">請於案件結案後登錄</p>
+    </header>
 
+    <div class="container">
         <form id="businessForm">
             <section class="form-section">
-                <h2>📋 基本資訊</h2>
+                <h2>基本資訊</h2>
                 
                 <div class="form-group">
-                    <label for="loginDate">📅 登入日期 *</label>
+                    <label for="loginDate">登入日期 <span class="required">*</span></label>
                     <input type="datetime-local" id="loginDate" name="loginDate" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="contactPerson">👤 承辦人 (可複選) *</label>
+                    <label>承辦人 (可複選) <span class="required">*</span></label>
                     <div class="checkbox-group">
-                        <label><input type="checkbox" name="contactPerson" value="阿德"> 阿德</label>
-                        <label><input type="checkbox" name="contactPerson" value="阿真"> 阿真</label>
-                        <label><input type="checkbox" name="contactPerson" value="秋伶"> 秋伶</label>
-                        <label><input type="checkbox" name="contactPerson" value="宇哲"> 宇哲</label>
-                        <label><input type="checkbox" name="contactPerson" value="暉恩"> 暉恩</label>
-                        <label><input type="checkbox" name="contactPerson" value="其他"> 其他</label>
+                        <label><input type="checkbox" name="contactPerson" value="阿德"><span>阿德</span></label>
+                        <label><input type="checkbox" name="contactPerson" value="阿真"><span>阿真</span></label>
+                        <label><input type="checkbox" name="contactPerson" value="秋伶"><span>秋伶</span></label>
+                        <label><input type="checkbox" name="contactPerson" value="宇哲"><span>宇哲</span></label>
+                        <label><input type="checkbox" name="contactPerson" value="暉恩"><span>暉恩</span></label>
+                        <label><input type="checkbox" name="contactPerson" value="其他"><span>其他</span></label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="workType">🛠️ 工作分類 *</label>
+                    <label for="workType">工作分類 <span class="required">*</span></label>
                     <select id="workType" name="workType" required>
                         <option value="">請選擇</option>
                         <option value="會審">會審</option>
@@ -47,30 +48,30 @@
             </section>
 
             <section class="form-section">
-                <h2>🏢 建築物資訊</h2>
-                
+                <h2>建築物資訊</h2>
+
                 <div class="form-group">
-                    <label for="builder">🏗️ 起造人 (建築物名稱) *</label>
-                    <input type="text" id="builder" name="builder" placeholder="請輸入建築物名稱" required>
+                    <label for="builder">起造人 (建築物名稱) <span class="required">*</span></label>
+                    <input type="text" id="builder" name="builder" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="firePermit">📜 消防核准文號</label>
-                    <input type="text" id="firePermit" name="firePermit" placeholder="請輸入消防核准文號">
+                    <label for="firePermit">消防核准文號</label>
+                    <input type="text" id="firePermit" name="firePermit">
                 </div>
 
                 <div class="form-group">
-                    <label for="address">📍 地址(地號) *</label>
-                    <input type="text" id="address" name="address" placeholder="請輸入地址" required>
+                    <label for="address">地址(地號) <span class="required">*</span></label>
+                    <input type="text" id="address" name="address" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="client">🤝 委託人 *</label>
-                    <input type="text" id="client" name="client" placeholder="請輸入委託人" required>
+                    <label for="client">委託人 <span class="required">*</span></label>
+                    <input type="text" id="client" name="client" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="buildingType">🏢 建築物用途分類 *</label>
+                    <label for="buildingType">建築物用途分類 <span class="required">*</span></label>
                     <select id="buildingType" name="buildingType" required>
                         <option value="">請選擇</option>
                         <option value="甲類">甲類</option>
@@ -83,36 +84,39 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="floors">🏢 樓層概要 (地上x層地下x層) *</label>
+                    <label for="floors">樓層概要(地上x層地下x層) <span class="required">*</span></label>
                     <input type="text" id="floors" name="floors" placeholder="例如：地上10層地下2層" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="totalArea">📏 總樓地板面積 *</label>
-                    <input type="number" id="totalArea" name="totalArea" placeholder="請輸入平方公尺" step="0.01" min="0" required>
+                    <label for="totalArea">總樓地板面積 <span class="required">*</span></label>
+                    <input type="text" id="totalArea" name="totalArea" placeholder="例如：500坪" required>
                 </div>
             </section>
 
             <section class="form-section">
-                <h2>📝 附加簽證 (可複選)</h2>
-                
-                <div class="checkbox-group">
-                    <label><input type="checkbox" name="certifications" value="設備師(李茂鑫)"> 🛠️ 設備師(李茂鑫)</label>
-                    <label><input type="checkbox" name="certifications" value="設備士(翁國珍)"> 🔧 設備士(翁國珍)</label>
-                    <label><input type="checkbox" name="certifications" value="發電機"> ⚡ 發電機</label>
-                    <label><input type="checkbox" name="certifications" value="緩降機"> 🪂 緩降機</label>
-                    <label><input type="checkbox" name="certifications" value="其他"> 📌 其他</label>
+                <h2>其他資訊</h2>
+
+                <div class="form-group">
+                    <label>附加簽證 (可複選)</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="certifications" value="設備師(李茂鑫)"><span>設備師(李茂鑫)</span></label>
+                        <label><input type="checkbox" name="certifications" value="設備士(翁國珍)"><span>設備士(翁國珍)</span></label>
+                        <label><input type="checkbox" name="certifications" value="發電機"><span>發電機</span></label>
+                        <label><input type="checkbox" name="certifications" value="緩降機"><span>緩降機</span></label>
+                        <label><input type="checkbox" name="certifications" value="其他"><span>其他</span></label>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="notes">💬 備註</label>
-                    <textarea id="notes" name="notes" rows="4" placeholder="請輸入其他備註事項"></textarea>
+                    <label for="notes">備註</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="其他補充說明"></textarea>
                 </div>
             </section>
 
             <div class="form-actions">
-                <button type="submit" class="btn-primary">✅ 提交</button>
-                <button type="reset" class="btn-secondary">🔄 清除表單</button>
+                <button type="button" class="btn btn-secondary" onclick="clearForm()">清除表單</button>
+                <button type="submit" class="btn btn-primary">提交</button>
             </div>
         </form>
 
@@ -120,13 +124,79 @@
     </div>
 
     <footer>
-        <p>本表單由尚鋐消防有限公司建立</p>
+        <p>這份表單是在 尚鋐消防有限公司 建立</p>
     </footer>
 
     <script>
         // Web App URL - Google Apps Script
         const API_URL = "https://script.google.com/macros/s/AKfycbxTiG2QpsKPmgq9YKrCmfpeFURBJeaZERFB_0q_DfpffttmySoMxXZU5jbOxnbw7ioO/exec";
+
+        // 設定預設日期為現在
+        document.getElementById('loginDate').value = new Date().toISOString().slice(0, 16);
+
+        // 清除表單
+        function clearForm() {
+            document.getElementById('businessForm').reset();
+            document.getElementById('loginDate').value = new Date().toISOString().slice(0, 16);
+            document.getElementById('result').classList.add('hidden');
+        }
+
+        // 提交表單
+        document.getElementById('businessForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            const submitBtn = this.querySelector('.btn-primary');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = '提交中...';
+            
+            // 收集表單資料
+            const formData = {
+                loginDate: document.getElementById('loginDate').value,
+                contactPerson: Array.from(document.querySelectorAll('input[name="contactPerson"]:checked')).map(cb => cb.value).join(', '),
+                workType: document.getElementById('workType').value,
+                builder: document.getElementById('builder').value,
+                firePermit: document.getElementById('firePermit').value,
+                address: document.getElementById('address').value,
+                client: document.getElementById('client').value,
+                buildingType: document.getElementById('buildingType').value,
+                floors: document.getElementById('floors').value,
+                totalArea: document.getElementById('totalArea').value,
+                certifications: Array.from(document.querySelectorAll('input[name="certifications"]:checked')).map(cb => cb.value).join(', '),
+                notes: document.getElementById('notes').value
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = '✅ 資料已成功提交！感謝您的填寫。';
+                    resultDiv.classList.remove('hidden');
+                    setTimeout(() => {
+                        clearForm();
+                    }, 2000);
+                } else {
+                    throw new Error(data.message || '提交失敗');
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '❌ 提交失敗：' + error.message;
+                resultDiv.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '提交';
+            }
+        });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
