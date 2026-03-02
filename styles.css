@@ -14,19 +14,19 @@ body {
 
 /* 頂部橫幅 */
 .header-banner {
-    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
     padding: 40px 20px;
     text-align: center;
     color: white;
 }
 
 .header-banner .logo {
-    max-width: 120px;
+    max-width: 300px;
     height: auto;
     margin-bottom: 10px;
-    background: rgba(255,255,255,0.9);
-    padding: 10px;
-    border-radius: 8px;
+    background: rgba(255,255,255,0.95);
+    padding: 15px;
+    border-radius: 12px;
 }
 
 .header-banner h1 {
@@ -110,8 +110,8 @@ body {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #4caf50;
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
 }
 
 /* 選擇框群組 */
@@ -144,7 +144,7 @@ body {
     width: 16px;
     height: 16px;
     cursor: pointer;
-    accent-color: #4caf50;
+    accent-color: #1a73e8;
 }
 
 .checkbox-group input[type="checkbox"]:checked + span {
@@ -172,13 +172,13 @@ body {
 }
 
 .btn-primary {
-    background: #4caf50;
+    background: #1a73e8;
     color: white;
 }
 
 .btn-primary:hover {
-    background: #43a047;
-    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+    background: #1557b0;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.4);
 }
 
 .btn-secondary {
