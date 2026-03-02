@@ -5,8 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>尚鋐消防 - 業務統計表</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #a1887f 0%, #8d6e63 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .login-box h2 {
+            color: #6d4c41;
+            margin-bottom: 20px;
+        }
+        .login-box input {
+            padding: 12px 16px;
+            border: 2px solid #d7ccc8;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 200px;
+            text-align: center;
+        }
+        .login-box button {
+            margin-top: 15px;
+            padding: 12px 30px;
+            background: #8d6e63;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-box button:hover {
+            background: #6d4c41;
+        }
+        .error-msg {
+            color: #c62828;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <!-- 密碼驗證畫面 -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>🔒 業務統計表</h2>
+            <input type="password" id="passwordInput" placeholder="請輸入密碼" maxlength="6">
+            <br>
+            <button onclick="checkPassword()">確認</button>
+            <p class="error-msg" id="errorMsg">密碼錯誤，請重新輸入</p>
+        </div>
+    </div>
+
     <!-- 頂部橫幅 -->
     <header class="header-banner">
         
@@ -128,18 +190,29 @@
     </footer>
 
     <script>
+        const CORRECT_PASSWORD = '561122';
+        
+        // 密碼驗證
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('errorMsg');
+            if (input === CORRECT_PASSWORD) {
+                document.getElementById('loginOverlay').style.display = 'none';
+                initForm();
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        }
+        
+        // 按 Enter 提交密碼
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
         // Web App URL - Google Apps Script
         const API_URL = "https://script.google.com/macros/s/AKfycbyqFH4MSMSLRUcwJqnm8q1SRObrTsmxz4cciG5Ne8VhoCE_oM0UrxlOPxXifZakHN6s/exec";
-
-        // 取得台灣時區的現在時間
-        function getTaiwanNow() {
-            // 台灣時區 UTC+8
-            const now = new Date();
-            const taiwanOffset = 8 * 60; // UTC+8
-            const localOffset = now.getTimezoneOffset();
-            const diff = (localOffset + taiwanOffset) * 60 * 1000;
-            return new Date(now.getTime() + diff);
-        }
 
         // 初始化標題和日期
         function initForm() {
@@ -148,7 +221,6 @@
             const month = now.getMonth() + 1;
             document.getElementById("formTitle").textContent = year + "年" + month + "月 業務統計表";
             
-            // 格式化為 YYYY-MM-DDTHH:mm
             const pad = (n) => n.toString().padStart(2, '0');
             const formatted = now.getFullYear() + '-' + 
                             pad(now.getMonth() + 1) + '-' + 
@@ -158,10 +230,14 @@
             document.getElementById('loginDate').value = formatted;
         }
 
-        // 頁面載入後初始化
-        initForm();
+        function getTaiwanNow() {
+            const now = new Date();
+            const taiwanOffset = 8 * 60;
+            const localOffset = now.getTimezoneOffset();
+            const diff = (localOffset + taiwanOffset) * 60 * 1000;
+            return new Date(now.getTime() + diff);
+        }
 
-        // 清除表單
         function clearForm() {
             document.getElementById('businessForm').reset();
             const now = getTaiwanNow();
@@ -175,7 +251,6 @@
             document.getElementById('result').classList.add('hidden');
         }
 
-        // 提交表單
         document.getElementById('businessForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -185,7 +260,6 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '提交中...';
             
-            // 使用 URLSearchParams
             const formData = new URLSearchParams();
             formData.append('loginDate', document.getElementById('loginDate').value);
             formData.append('contactPerson', Array.from(document.querySelectorAll('input[name="contactPerson"]:checked')).map(cb => cb.value).join(', '));
