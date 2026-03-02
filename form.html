@@ -10,7 +10,7 @@
     <!-- 頂部橫幅 -->
     <header class="header-banner">
         
-        <h1>2026年 業務統計表</h1>
+        <h1 id="formTitle">載入中...</h1>
         <p class="subtitle">請於案件結案後登錄</p>
     </header>
 
@@ -130,6 +130,12 @@
     <script>
         // Web App URL - Google Apps Script
         const API_URL = "https://script.google.com/macros/s/AKfycbxTiG2QpsKPmgq9YKrCmfpeFURBJeaZERFB_0q_DfpffttmySoMxXZU5jbOxnbw7ioO/exec";
+
+        // 自動顯示當前年月的標題
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1;
+        document.getElementById("formTitle").textContent = year + "年" + month + "月 業務統計表";
 
         // 設定預設日期為現在
         document.getElementById('loginDate').value = new Date().toISOString().slice(0, 16);
